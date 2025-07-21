@@ -1,38 +1,54 @@
 "use client";
-
-import { useLanguage } from "@/hooks/useLanguage";
-import { FC } from "react";
+import { useState, useRef, useEffect } from "react";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { languageMap } from "@/data/language";
-import { FaChevronDown } from "react-icons/fa";
+import { useLanguage } from "@/hooks/useLanguage";
+import { FaLanguage } from "react-icons/fa6";
 
-interface LanguageSwitchProps {}
-
-const LanguageSwitch: FC<LanguageSwitchProps> = ({}) => {
+export default function CustomLanguageSwitch() {
   const { languageState, changeLanguage } = useLanguage();
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    changeLanguage(event.target.value as "En" | "Fa");
-  };
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
-    <div className="relative inline-block text-left">
-      <select
-        id="language-select"
-        value={languageState}
-        onChange={handleChange}
-        className="block appearance-none w-full bg-background border border-gray-300 hover:border-gray-400 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline text-gray-700"
+    <div ref={ref} className="relative inline-block text-left w-40">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full bg-white border space-x-1 border-gray-300 rounded px-3 py-2 flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-primary"
       >
-        {Object.entries(languageMap).map(([key, value]) => (
-          <option key={key} value={key}>
-            {value}
-          </option>
-        ))}
-      </select>
-      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-        <FaChevronDown />
-      </div>
+        {languageMap[languageState]}
+        <FaLanguage className="text-lg" />
+        {open ? <FaChevronUp /> : <FaChevronDown />}
+      </button>
+
+      {open && (
+        <ul className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded shadow max-h-60 overflow-auto">
+          {Object.entries(languageMap).map(([key, value]) => (
+            <li
+              key={key}
+              onClick={() => {
+                changeLanguage(key as any);
+                setOpen(false);
+              }}
+              className={`cursor-pointer px-4 py-2 hover:bg-gray-100 hover:text-primary ${
+                languageState === key ? "font-bold bg-primary text-white" : ""
+              }`}
+            >
+              {value}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
-};
-
-export default LanguageSwitch;
+}
