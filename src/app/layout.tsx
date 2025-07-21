@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html
       lang={languageState.toLocaleLowerCase()}
-      dir={languageState === "En" ? "ltr" : "rtl"}
+      dir={languageState === "Fa" ? "rtl" : "ltr"}
     >
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

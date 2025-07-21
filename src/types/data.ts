@@ -1,5 +1,5 @@
 import { IconType } from "react-icons";
-export type TLanguage = "En" | "Fa";
+export type TLanguage = "En" | "Fa" | "Fr" | "De";
 
 export interface TWord {
   id?: number;
