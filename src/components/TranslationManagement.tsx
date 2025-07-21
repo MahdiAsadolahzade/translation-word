@@ -38,7 +38,6 @@ const TranslationManagement: FC<TranslationManagementProps> = ({}) => {
     language: languageState,
   });
 
- 
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: {
@@ -64,7 +63,7 @@ const TranslationManagement: FC<TranslationManagementProps> = ({}) => {
 
   const handleAddWord = () => {
     if (!newWord.key.trim()) return;
-    addWord({ ...newWord, id: Date.now(), language: languageState });
+    addWord({ ...newWord, language: languageState });
     setNewWord({ key: "", translation: "", language: languageState });
   };
 
@@ -84,16 +83,13 @@ const TranslationManagement: FC<TranslationManagementProps> = ({}) => {
     const { active, over } = event;
 
     if (active.id !== over.id) {
-
       const allWords = getWords();
-
 
       const activeWord = allWords.find((w) => w.id === active.id);
       const overWord = allWords.find((w) => w.id === over.id);
 
       if (!activeWord || !overWord) return;
 
- 
       const oldIndex = allWords.findIndex((w) => w.id === active.id);
       const newIndex = allWords.findIndex((w) => w.id === over.id);
 
@@ -154,7 +150,7 @@ const TranslationManagement: FC<TranslationManagementProps> = ({}) => {
       {/* Header and Search */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
         <h1 className="text-2xl font-bold text-gray-800">
-          {t("translation_management")} ({languageState})
+          {t("translation_management")} ({languageState}) [{data.length}]
         </h1>
 
         <div className="relative w-full md:w-64">

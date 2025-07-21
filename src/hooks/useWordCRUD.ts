@@ -11,7 +11,7 @@ export const useWordCRUD = () => {
 
 
   const addWord = (word: TWord) => {
-    let addLength = wordState.length + 1;
+    let addLength =  Date.now();
 
     addState({ ...word, id: addLength });
   };
