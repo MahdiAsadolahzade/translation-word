@@ -1,0 +1,42 @@
+import { TWord } from "@/types/data";
+
+export const initialWordRepositoryData: TWord[] = [
+  // English words (translated to Persian)
+  { id: 1, key: "hello", translation: "سلام", language: "En" },
+  { id: 2, key: "world", translation: "جهان", language: "En" },
+  { id: 3, key: "book", translation: "کتاب", language: "En" },
+  { id: 4, key: "computer", translation: "رایانه", language: "En" },
+  { id: 5, key: "car", translation: "ماشین", language: "En" },
+  { id: 6, key: "music", translation: "موسیقی", language: "En" },
+  { id: 7, key: "love", translation: "عشق", language: "En" },
+  { id: 8, key: "light", translation: "نور", language: "En" },
+  { id: 9, key: "happy", translation: "خوشحال", language: "En" },
+  { id: 10, key: "friend", translation: "دوست", language: "En" },
+  { id: 11, key: "coffee", translation: "قهوه", language: "En" },
+  { id: 12, key: "tree", translation: "درخت", language: "En" },
+  { id: 13, key: "river", translation: "رودخانه", language: "En" },
+  { id: 14, key: "cat", translation: "گربه", language: "En" },
+  { id: 15, key: "dog", translation: "سگ", language: "En" },
+  { id: 16, key: "family", translation: "خانواده", language: "En" },
+  { id: 17, key: "school", translation: "مدرسه", language: "En" },
+  { id: 18, key: "food", translation: "غذا", language: "En" },
+  { id: 19, key: "dream", translation: "رویا", language: "En" },
+  { id: 20, key: "sky", translation: "آسمان", language: "En" },
+
+  // Persian words (translated to English)
+  { id: 21, key: "زمان", translation: "time", language: "Fa" },
+  { id: 22, key: "شادی", translation: "joy", language: "Fa" },
+  { id: 23, key: "دانش", translation: "knowledge", language: "Fa" },
+  { id: 24, key: "درک", translation: "understanding", language: "Fa" },
+  { id: 25, key: "هوش", translation: "intelligence", language: "Fa" },
+  { id: 26, key: "احساس", translation: "emotion", language: "Fa" },
+  { id: 27, key: "کوه", translation: "mountain", language: "Fa" },
+  { id: 28, key: "دریا", translation: "sea", language: "Fa" },
+  { id: 29, key: "عشق", translation: "love", language: "Fa" },
+  { id: 30, key: "تجربه", translation: "experience", language: "Fa" },
+  { id: 31, key: "زندگی", translation: "life", language: "Fa" },
+  { id: 32, key: "سرنوشت", translation: "destiny", language: "Fa" },
+  { id: 33, key: "پرواز", translation: "flight", language: "Fa" },
+  { id: 34, key: "احترام", translation: "respect", language: "Fa" },
+  { id: 35, key: "خاطره", translation: "memory", language: "Fa" },
+];
